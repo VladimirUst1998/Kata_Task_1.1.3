@@ -2,7 +2,6 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,7 +21,7 @@ public class UserDaoHibernateImpl extends Util implements UserDao {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            SQLQuery sqlquery = session.createSQLQuery(sql);
+            Query sqlquery = session.createSQLQuery(sql);
             sqlquery.executeUpdate();
             transaction.commit();
         } catch (Exception e) {
